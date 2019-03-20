@@ -1,16 +1,12 @@
 import { FETCH_FORM, CHANGE_ELEMENT, CHANGE_PAGE } from './types';
 
-export default () => (dispatch) => {
+export default (payload) => (dispatch) => {
     //do some action
 
-    console.log("PAYLOAD: ",dispatch)
+    console.log("PAYLOAD: ",payload)
 
     dispatch({
         type: CHANGE_ELEMENT,
-        payload: {
-            page_index:1,
-            element_index:0,
-            change: "vasa"
-        }
+        payload: payload
     })
 }

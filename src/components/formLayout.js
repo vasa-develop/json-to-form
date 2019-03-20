@@ -30,7 +30,7 @@ class FormLayout extends Component {
                     )
                 })}
             </ul>
-            <Page data={form.pages[this.props.match.params.index-1]} page_index={this.props.match.params.index}/> 
+            <Page data={form.pages[this.props.match.params.index-1]} page_index={this.props.match.params.index-1}/> 
         </div>
         )
     }

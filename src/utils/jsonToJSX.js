@@ -7,7 +7,7 @@ import pageActions from '../actions/pageActions'
 class jsonToJSX extends Component {
     
     handleInput= (page_index, element_index, e) => {
-        console.log("input: "+e.target.value )
+        console.log("input: "+page_index, element_index)
         this.props.pageActions({
             page_index,
             element_index,
@@ -15,9 +15,18 @@ class jsonToJSX extends Component {
         })
     }
 
+    
+     componentWillReceiveProps(props){
+         console.log("Props 2",props);
+     }
+
     elementToJSX = (item, index, handleInput) => {
+
+        console.log('page_index: ',this.props.data.page_index)
+
         item['element_index'] = index;
         item['inputHandler'] = handleInput;
+        item['page_index'] = this.props.data.page_index;
 
         switch(item.element){
             
@@ -58,12 +67,15 @@ class jsonToJSX extends Component {
         ): ""
         )
     }
-    mapStateToProps = state => (
-        state.form_data.form.form ? 
-         { data: state.form_data.form.form.pages[this.props.page_index] } : 
-         { data: {fields: []} }
-    )
 }
 
+const mapStateToProps = (state,props) => {
+    console.log("State ",state);
+    console.log("props ",props);
+    return (
+    state.form_data.form.form ? 
+     { data: state.form_data.form.form.pages[props.data.page_index] } : 
+     { data: {fields: []} }
+)}
 
-export default connect(jsonToJSX.mapStateToProps, { pageActions })(jsonToJSX)
+export default connect(mapStateToProps, { pageActions })(jsonToJSX)
