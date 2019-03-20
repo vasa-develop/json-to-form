@@ -6,6 +6,8 @@ const middlewares = [thunk];
 
 const intialState = {};
 
+//REACT DEV TOLS DOCS: https://github.com/zalmoxisus/redux-devtools-extension
+
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
@@ -17,6 +19,7 @@ const enhancer = composeEnhancers(
   applyMiddleware(...middlewares),
   // other store enhancers if any
 );
+
 const store = createStore(RootReducer, enhancer);
 
 export default store;
