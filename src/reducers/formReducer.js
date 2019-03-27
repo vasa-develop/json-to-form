@@ -28,9 +28,9 @@ export default (state = initial_state, action) => {
                     break;
                 
                 case "file":
-                    let files = state.form.form['files'] || [];
+                    let files = state.form.form['files'] || {};
                     for(let i=0;i<action.payload.files.length;i++){
-                        files.push(action.payload.files[i])    
+                        files[action.payload.files[i].name] = action.payload.files[i]    
                     }
                     newState = immutable.set(state, 'form.form.pages.'+action.payload.page_index+'.fields.'+action.payload.element_index+'.value', action.payload.value)
                     newState = immutable.set(newState, 'form.form.files', files)

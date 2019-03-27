@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import apiMiddleware from 'redux-cross-fetch'
 import RootReducer from '../reducers';
 
-const middlewares = [thunk];
+const middlewares = [thunk, apiMiddleware];
 
 const intialState = {};
 

@@ -32,7 +32,7 @@ class jsonToJSX extends Component {
             page_index,
             element_index,
             element: e.target.type,
-            value: e.target.value,
+            value: e.target.files[0],
             files: e.target.files
         })
     }
@@ -79,15 +79,15 @@ class jsonToJSX extends Component {
     render() {
         console.log("JSX: ", this.props.data)
         return (
-            this.props.data ? (
-                <div>
-                    {
-                        this.props.data.fields.map((item, index) => {
-                            return this.elementToJSX(item, index)
-                        })
-                    }
-                </div>
-            ) : ""
+                    this.props.data ? (
+                        <div>
+                            {
+                                this.props.data.fields.map((item, index) => {
+                                    return this.elementToJSX(item, index)
+                                })
+                            }
+                        </div>
+                    ) : ""
         )
     }
 }
